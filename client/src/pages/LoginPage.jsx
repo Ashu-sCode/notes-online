@@ -8,7 +8,11 @@ import { REGEX_EMAIL_TYPE } from '../lib';
 import toast from 'react-hot-toast';
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -31,12 +35,11 @@ const LoginPage = () => {
       setLoading(false);
       return;
     }
+
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_URL_BACKEND}/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
@@ -58,9 +61,7 @@ const LoginPage = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex justify-center items-center px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <div className="p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
-            Login
-          </h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">Login</h2>
 
           {error && (
             <div className="bg-red-100 dark:bg-red-400/20 border border-red-400 dark:border-red-500 text-red-700 dark:text-red-300 px-4 py-3 rounded mb-4 text-sm sm:text-base">
@@ -115,7 +116,7 @@ const LoginPage = () => {
           <div className="mt-4 sm:mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">Or continue with</span>
